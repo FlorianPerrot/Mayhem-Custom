@@ -1,0 +1,29 @@
+# src/mayhem/WelcomeBundle/Resources/config/routing.yml
+
+mayhemwelcome_accueil:
+    path:      /{page}
+    defaults:  { _controller: MayhemWelcomeBundle:Welcome:index, page: 1 }
+    requirements:
+        page:  \d*
+   
+mayhemwelcome_voir:
+    path:      /article/{id}
+    defaults:  { _controller: MayhemWelcomeBundle:Welcome:voir }
+    requirements:
+        id:  \d+
+    
+mayhemwelcome_ajouter:
+    path:      /ajouter
+    defaults:  { _controller: MayhemWelcomeBundle:Welcome:ajouter }
+
+mayhemwelcome_modifier:
+    path:      /modifier/{id}
+    defaults:  { _controller: MayhemWelcomeBundle:Welcome:modifier }
+    requirements:
+        id:  \d+
+
+mayhemwelcome_supprimer:
+    path:      /supprimer/{id}
+    defaults:  { _controller: MayhemWelcomeBundle:Welcome:supprimer }
+    requirements:
+        id:  \d+
