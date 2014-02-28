@@ -1,0 +1,7 @@
+parameters:
+#    mayhem_welcome.example.class: Mayhem\WelcomeBundle\Example
+
+services:
+#    mayhem_welcome.example:
+#        class: %mayhem_welcome.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
