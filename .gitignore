@@ -11,3 +11,12 @@ web/bundles/*
 # Configuration files
 app/config/parameters.ini
 app/config/parameters.yml
+
+# Eclipse files
+.settings
+.buildpath
+.project
+
+# Capifony
+Capfile
+app/config/deploy.rb
