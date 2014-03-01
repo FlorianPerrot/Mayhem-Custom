@@ -1,0 +1,29 @@
+# src/mayhem/MainBundle/Resources/config/routing.yml
+
+mayhemmain_accueil:
+    path:      /{page}
+    defaults:  { _controller: MayhemMainBundle:Main:index, page: 1 }
+    requirements:
+        page:  \d*
+   
+mayhemmain_voir:
+    path:      /article/{id}
+    defaults:  { _controller: MayhemMainBundle:Main:voir }
+    requirements:
+        id:  \d+
+    
+mayhemmain_ajouter:
+    path:      /ajouter
+    defaults:  { _controller: MayhemMainBundle:Main:ajouter }
+
+mayhemmain_modifier:
+    path:      /modifier/{id}
+    defaults:  { _controller: MayhemMainBundle:Main:modifier }
+    requirements:
+        id:  \d+
+
+mayhemmain_supprimer:
+    path:      /supprimer/{id}
+    defaults:  { _controller: MayhemMainBundle:Main:supprimer }
+    requirements:
+        id:  \d+

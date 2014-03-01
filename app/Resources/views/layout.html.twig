@@ -1,0 +1,86 @@
+{# app/Resources/views/layout.html.twig #}
+
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>{% block title %}Mayhem Custom{% endblock %}</title>
+
+    {% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/init.css') }}" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('css/layout.css') }}" type="text/css" />
+    {% endblock %}
+    
+  </head>
+  
+  <body >
+  
+  	  	<header id="header">
+	  		<img class="img-header" src="{{ asset('img/rip.png') }}">
+	  		<nav id="menu">
+	  			{% block nav %}
+	  			<ul>
+	  				<li class="nav-element1"><a href="#">Qui sommes nous ?</a></li>
+	  				<li class="nav-element2"><a href="#">Projet Reaper</a></li>
+	  			</ul>
+	   			{% endblock %}
+	  		</nav>
+	  	</header>
+	  		
+		<section id="main" class="container border1">
+			{% block main %}
+			
+			<div class="widget w1-widget border2">
+				<img class="banner-ulule" src="http://www.infojeune41.org/wp-content/uploads/ulule_gros.png">
+				<hr />
+				<img class="span-img1 margin1 vertical-align" src="http://www.clker.com/cliparts/d/c/0/d/1259089297665068165question%20mark%20clkerdotcom.png">
+				<p class="vertical-align"> Pourquoi ulule ?</p>
+				<p class="margin2"> Campagne exaltait oh et mamelons de dissiper. Le au peine neige en linge. En un paraissait lumineuses tristement qu. Vent on xv pere bete ah te. Ah je je seulement militaire boulevard le gendarmes. Et importe la le pendant ecarter galoper falloir donnent. Son atteindra sur sacrifice peu suspendue enfantent ses. Allumait physique on fillette or ai. Du se magasins arsenaux relevent cherirai tu joyeuses mettions. Roc pied bete est murs nees. </p>
+			</div>
+			
+			<div class="widget border2 w1-widget">
+				<img class="banner-ulule" src="http://tpe-smc-handicap.e-monsite.com/medias/images/handicape-1.jpg">
+				<hr />
+				<h1> Handicape </h1>
+				<p> Meconnais enfantent et apprendre je metairies. Convertir defensive ete ifs une ere poussiere distribua redoutait. Il style drape au mines vecut. Par net peut par agir vont. Tiendrons le tu echangent sentiment xv cartouche. Garnison cavernes du etendues je quelques mourants ne exaltait en. Ras son tenait sommes brumes. Seulement oh neanmoins eu causaient tranchees on toutefois tu laidement. Pris donc son dut tout que.</p>
+	   		</div>
+	   		<div class="widget w1-widget border2" >
+	   			<img class="banner-ulule" src="http://i.dailymail.co.uk/i/pix/2011/01/14/article-0-0CC19B52000005DC-846_634x542.jpg">
+	   			<hr />
+				<h1> Reaper project c'est quoi ? </h1>
+				<p>Meme fin ont ùuit oui vive epis vous. Penser lieues parees ifs ere. Des sol aux foret louis motif celui coupe carre. Je je laissa eu poussa appris ah tuiles. Ici cadeaux ere enfants donnent non une. Enfantent prenaient la cesserent si convertir. Cranes canons je oh soeurs.</p>
+	   		</div>
+	   		<div class="widget border2 w1-widget">
+				<h1>Que ans avez deja dur pile nez</h1>
+				<p>Au au chinois chatoie retient il arriere donnent eclairs te. Apprit succes il chiens du ah. Sapin air matin jeu faite eumes. Qu ni ou ne sanglees detourne imberbes. Tacherai kolbacks du comptait la. Refletez il sifflent hebetude me arrivons.</p>
+				<p>Donc hein que ils chez meme aux ete. Qu creerent premiere ca retablir en imberbes oh penetrer ennemies. Seule corps berce le du abris toute ponts. Signe peu ras coups subit. Et cantines xv on kolbacks hataient etranges adjudant. Connu nuits etais on la. Un exasperer boulevard detourner tu dernieres on tu printemps sentiment. Ai en garde pente je prime desir on.</p>		</div>
+	   		
+	   		{% endblock %}
+		</section>
+		
+		
+		
+		<footer id="footer" class="container border1">
+			<p>Mayhem Custom est une petite équipe animée par la passion du travail bien fait ou un truc comme ça ...<br />
+			Site développé par <b>Florian Perrot</b> ;).
+			</p>
+		</footer>
+
+		{% block js %}
+		    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+		    <script type="text/javascript" src="{{ asset('js/masonry.js') }}"></script>	
+		{% endblock %}
+		{% block script %}
+			<script type="text/javascript">
+	   			docReady( function() {
+	   			    var container = document.querySelector('#main');
+	   			    var article = container.querySelector('article');
+	   			    var msnry = new Masonry( container, { itemSelector: '.widget', "isFitWidth": true});
+	   			    msnry.stamp( article );
+	   			    msnry.layout();
+	   			});
+    		</script>
+    	{% endblock %}	
+
+	</body>
+</html>

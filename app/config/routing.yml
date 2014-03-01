@@ -1,8 +1,3 @@
-mayhem_blog:
-    resource: "@MayhemBlogBundle/Resources/config/routing.yml"
-    prefix:   /blog
-
-mayhem_welcome:
-    resource: "@MayhemWelcomeBundle/Resources/config/routing.yml"
+SdzBlogBundle:
+    resource: "@MayhemMainBundle/Resources/config/routing.yml"
     prefix:   /
-
