@@ -1,11 +1,13 @@
 # src/mayhem/MainBundle/Resources/config/routing.yml
 
 mayhemmain_accueil:
-    path:      /{page}
-    defaults:  { _controller: MayhemMainBundle:Main:index, page: 1 }
-    requirements:
-        page:  \d*
-   
+    path:      /
+    defaults:  { _controller: MayhemMainBundle:Main:accueil}
+        
+mayhemmain_qui:
+  path:        /qui-sommes-nous/
+  defaults:    { _controller: MayhemMainBundle:Main:qui}
+  
 mayhemmain_voir:
     path:      /article/{id}
     defaults:  { _controller: MayhemMainBundle:Main:voir }

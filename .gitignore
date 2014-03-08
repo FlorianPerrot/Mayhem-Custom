@@ -16,7 +16,3 @@ app/config/parameters.yml
 .settings
 .buildpath
 .project
-
-# Capifony
-Capfile
-app/config/deploy.rb

@@ -1,0 +1,74 @@
+/* Bloc header */
+header{
+	margin-top: 10px;
+}
+/***************/
+
+
+
+/* Bloc Main */
+#main{
+	width: 90%;
+	max-width: 1024px;
+	min-width: 530px;
+	margin-bottom: 100px;
+	text-align: center;
+}
+
+#photo-bar{
+	vertical-align:middle;
+	display:inline-block;
+	margin: 10px;
+}
+.widget{
+	width: 100px;
+	border-radius: 50%;
+	margin: 10px;
+	border:10px solid #C9C9C9;
+
+}
+.widget img{
+	border-radius: 50%;
+	width: 100%;
+}
+
+#bio-contener{
+	vertical-align:middle;
+	display:inline-block;
+	text-align: left;
+	width: 70%;
+}
+.bio{
+	padding: 50px 10px 50px 10px;
+	overflow:hidden;
+}
+.bio-bloc-text{
+}
+
+
+#photo-bar img{
+	border-radius: 50%;
+	width: 100%;
+}
+#bio-contener .bio-photo{
+	border-radius: 50%;
+	margin: 0px;
+	width: 200px;
+	float:left;
+}
+.widget:hover {
+	border:solid 10px #942A25; 
+	cursor:pointer;
+}
+/*************/
+
+@media only screen and (max-width:680px) {
+	.widget{
+		width: 80px;
+		display: inline-block;
+	}
+	#bio-contener{
+		width: 90%;
+		margin: 10px;
+	}
+}

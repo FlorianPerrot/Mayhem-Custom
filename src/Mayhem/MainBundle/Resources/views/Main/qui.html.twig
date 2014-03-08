@@ -1,0 +1,85 @@
+{# src/Mayhem/MainBundle/Resources/views/Welcome/qui.html.twig #}
+
+{% extends "::layout.html.twig" %}
+
+{% block title %}- {{ parent() }} - Qui sommes nous ?{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link href="{{ asset('bundles/mayhemmain/css/qui.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block banner %}{% endblock %}
+
+{% block main %}
+
+	<section id="main" class="container border1">
+		<div id="photo-bar">
+			<ul>
+		    {% for lui in qui %}
+		    	<li id="photo{{ loop.index }}" class="widget">
+		      	{# Ajoute une image si il y a un lien d'image #}
+		      	{% if lui.photo_url != "" %}
+					<img class="w-auto" src="{{ lui.photo_url }}">
+				{% else %}
+					<img class="w-auto" src="{{ asset('bundles/mayhemmain/images/no-photo.jpg') }}">
+		      	{% endif %}
+		    	</li>
+		    {% endfor %}
+		    </ul>
+	    </div>
+	    <div id="bio-contener">
+		    	{% set lui = qui|first %}
+		   		<div class="bio border2">
+				   	{# Ajoute une image si il y a un lien d'image #}
+				   	{% if lui.photo_url != "" %}
+						<img class="bio-photo" alt="photo {{ lui.nom }}" src="{{ lui.photo_url }}">
+					{% else %}
+						<img class="bio-photo" alt="photo {{ lui.nom }}" src="{{ asset('bundles/mayhemmain/images/no-photo.jpg') }}">
+				    {% endif %}
+				     	
+				    {# ajoute l'article #}
+				    <div class="bio-bloc-text">
+				    	<h1 class="bio-name">{{ lui.nom }}</h1>
+				    	<p class="bio-text">{{ lui.bio }}</p>
+				    </div>
+				</div> 
+		   
+		</div>
+	</section>
+
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
+{% block js%}
+	{{ parent() }}
+	<script type="text/javascript">
+	   docReady( function() {
+	   		var i = 1;
+	   		
+	   		$(".widget").each(function(){
+	   			$(this).click(function(){
+
+		   			lui = qui[parseInt($(this).attr("id").replace("photo","")-1)];
+
+		   			if(lui[0] == ""){
+		   				$(".bio-photo").attr("src","{{ asset('bundles/mayhemmain/images/no-photo.jpg') }}");
+		   				$(".bio-photo").attr("alt","pas d'image");}
+		   			else{
+		   				$(".bio-photo").attr("src",lui[0]);
+		   				$(".bio-photo").attr("alt","photo de "+lui[1]);}
+		   				
+		   			$(".bio-name").text(lui[1]);
+		   			$(".bio-text").text(lui[2]);
+	   			});
+	   			i++;
+	   		});
+
+		   	qui = [["{{ qui[0].photo_url }}","{{ qui[0].nom }}","{{ qui[0].bio }}"],
+		   		  ["{{ qui[1].photo_url }}","{{ qui[1].nom }}","{{ qui[1].bio }}"],
+		   		  ["{{ qui[2].photo_url }}","{{ qui[2].nom }}","{{ qui[2].bio }}"],
+		   		  ["{{ qui[3].photo_url }}","{{ qui[3].nom }}","{{ qui[3].bio }}"]];
+	   });
+    </script>
+{% endblock %}
