@@ -5,9 +5,13 @@ mayhemmain_accueil:
     defaults:  { _controller: MayhemMainBundle:Main:accueil}
         
 mayhemmain_qui:
-  path:        /qui-sommes-nous/
-  defaults:    { _controller: MayhemMainBundle:Main:qui}
-  
+    path:        /qui-sommes-nous/
+    defaults:    { _controller: MayhemMainBundle:Main:qui}
+
+mayhemmain_calendrier:
+    path:        /calendrier/
+    defaults:    { _controller: MayhemMainBundle:Main:calendrier}
+    
 mayhemmain_voir:
     path:      /article/{id}
     defaults:  { _controller: MayhemMainBundle:Main:voir }

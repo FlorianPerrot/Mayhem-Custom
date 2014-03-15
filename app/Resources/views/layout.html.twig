@@ -23,8 +23,9 @@
 		  		<nav id="menu">
 		  			{% block nav %}
 		  			<ul>
-		  				<li class="nav-element1"><a href="{{ path('mayhemmain_qui') }}">Qui sommes nous ?</a></li>
-		  				<li class="nav-element2"><a href="{{ path('mayhemmain_accueil') }}">Projet Reaper</a></li>
+		  				<li class="nav-element1"><a class="menu-qui" href="{{ path('mayhemmain_qui') }}">Qui sommes nous ?</a></li>
+		  				<li class="nav-element2"><a class="menu-reaper" href="{{ path('mayhemmain_accueil') }}">Projet Reaper</a></li>
+		  				<li class="nav-element3"><a class="menu-calendrier" href="{{ path('mayhemmain_calendrier') }}">Calendrier</a></li>
 		  			</ul>
 		   			{% endblock %}
 		  		</nav>

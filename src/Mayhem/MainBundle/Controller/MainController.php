@@ -36,4 +36,16 @@ class MainController extends Controller
         	'qui' => $qui
 		));		
 	}
+
+	public function calendrierAction(){
+		$evenements = array(
+			array('date'=>'','titre'=>'','contenu'=>''),
+			array('date'=>'','titre'=>'','contenu'=>''),
+			array('date'=>'','titre'=>'','contenu'=>''),
+		);
+		
+        return $this->render('MayhemMainBundle:Main:calendrier.html.twig',array(
+        	'evenements' => $evenements
+		));			
+	}
 }
