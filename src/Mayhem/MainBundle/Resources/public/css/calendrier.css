@@ -1,0 +1,23 @@
+#menu ul > li > .planning { 
+  background: #F1F1F1;
+  color: #000000;
+  border: solid 2px #942A25;
+}
+
+.calendrier{
+	float: right;
+	text-align: center;
+	width: 13%;
+	margin: 2% 2% 2% 0;
+	padding: 1%;
+}
+
+.evenements{
+	text-align: left;
+}
+
+.evenements div{
+	width: 75%;
+	margin: 2%;
+	padding: 2%;
+}
