@@ -28,23 +28,20 @@
 		    {% endfor %}
 		    </ul>
 	    </div>
-	    <div id="bio-contener">
-		    	{% set lui = qui|first %}
-		   		<div class="bio border2">
-				   	{# Ajoute une image si il y a un lien d'image #}
-				   	{% if lui.photo_url != "" %}
-						<img class="bio-photo" alt="photo {{ lui.nom }}" src="{{ lui.photo_url }}">
-					{% else %}
-						<img class="bio-photo" alt="photo {{ lui.nom }}" src="{{ asset('bundles/mayhemmain/images/no-photo.jpg') }}">
-				    {% endif %}
+	    <div id="bio-contener" class="border2">
+		    {% set lui = qui|first %}
+			{# Ajoute une image si il y a un lien d'image #}
+			{% if lui.photo_url != "" %}
+				<img class="bio-photo" alt="photo {{ lui.nom }}" src="{{ lui.photo_url }}">
+			{% else %}
+				<img class="bio-photo" alt="photo {{ lui.nom }}" src="{{ asset('bundles/mayhemmain/images/no-photo.jpg') }}">
+			{% endif %}
 				     	
-				    {# ajoute l'article #}
-				    <div class="bio-bloc-text">
-				    	<h1 class="bio-name">{{ lui.nom }}</h1>
-				    	<p class="bio-text">{{ lui.bio }}</p>
-				    </div>
-				</div> 
-		   
+			{# ajoute l'article #}
+			<div class="bio-bloc-text">
+				<h1 class="bio-name">{{ lui.nom }}</h1>
+				<p class="bio-text">{{ lui.bio }}</p>
+			</div>
 		</div>
 	</section>
 

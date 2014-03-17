@@ -4,7 +4,7 @@
 	color: #000000;
 }
 
-.calendrier{
+#main > .calendrier{
 	float: right;
 	text-align: center;
 	width: 13%;
@@ -17,14 +17,14 @@
 	text-align: left;
 }
 
-#main .evenement{
+#main > .evenement{
 	border: 1px solid rgba(0, 0, 0, 0);
 	width: 75%;
 	margin: 2%;
 	padding: 2%;
 }
 
-#main .evenement:hover{
+#main > .evenement:hover{
 	border: 1px solid #942A25;
 	-webkit-box-shadow:inset 2px 2px 2px rgba(0, 0, 0, 0.15);
 	-moz-box-shadow:inset 2px 2px 2px rgba(0, 0, 0, 0.15);
