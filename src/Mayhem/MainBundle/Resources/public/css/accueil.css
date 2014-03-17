@@ -1,3 +1,9 @@
+#menu > ul > li > .menu-reaper{
+	border: solid 2px #942A25;
+	background: #F6F6F6;
+	color: #000000;
+}
+
 /* Bloc Main */
 #main .widget {
 	border: 1px solid rgba(0, 0, 0, 0);
