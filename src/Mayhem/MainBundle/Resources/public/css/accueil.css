@@ -1,8 +1,9 @@
 /* Bloc Main */
 #main .widget {
-	margin:10px;
-	padding:5px;
-	text-align:left;
+	border: 1px solid rgba(0, 0, 0, 0);
+	margin: 10px;
+	padding: 5px;
+	text-align: left;
 }
 #main .widget:hover {
 	border:1px solid #942A25;
