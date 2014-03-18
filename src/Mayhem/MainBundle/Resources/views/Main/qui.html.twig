@@ -20,13 +20,13 @@
 		    	<li id="photo{{ loop.index }}" class="widget">
 		      	{# Ajoute une image si il y a un lien d'image #}
 		      	{% if lui.photo_url != "" %}
-					<img class="w-auto" src="{{ lui.photo_url }}">
+					<img class="w-auto" alt="photo de {{ lui.nom }}" src="{{ lui.photo_url }}">
 				{% else %}
-					<img class="w-auto" src="{{ asset('bundles/mayhemmain/images/no-photo.jpg') }}">
+					<img class="w-auto" alt="pas de photo" src="{{ asset('bundles/mayhemmain/images/no-photo.jpg') }}">
 		      	{% endif %}
 		    	</li>
 		    {% endfor %}
-		    </ul>
+			</ul>
 	    </div>
 	    <div id="bio-contener" class="border2">
 		    {% set lui = qui|first %}
@@ -34,7 +34,7 @@
 			{% if lui.photo_url != "" %}
 				<img class="bio-photo" alt="photo {{ lui.nom }}" src="{{ lui.photo_url }}">
 			{% else %}
-				<img class="bio-photo" alt="photo {{ lui.nom }}" src="{{ asset('bundles/mayhemmain/images/no-photo.jpg') }}">
+				<img class="bio-photo" alt="Pas de photo" src="{{ asset('bundles/mayhemmain/images/no-photo.jpg') }}">
 			{% endif %}
 				     	
 			{# ajoute l'article #}
@@ -54,11 +54,11 @@
 	<script type="text/javascript">
 	   docReady( function() {
 	   		var i = 1;
-	   		
+   		
 	   		$(".widget").each(function(){
 	   			$(this).click(function(){
-
-		   			lui = qui[parseInt($(this).attr("id").replace("photo","")-1)];
+					
+					lui = qui[parseInt($(this).attr("id").replace("photo","")-1)];
 
 		   			if(lui[0] == ""){
 		   				$(".bio-photo").attr("src","{{ asset('bundles/mayhemmain/images/no-photo.jpg') }}");
@@ -69,14 +69,12 @@
 		   				
 		   			$(".bio-name").text(lui[1]);
 		   			$(".bio-text").text(lui[2]);
+		   			
 	   			});
-	   			i++;
 	   		});
-
-		   	qui = [["{{ qui[0].photo_url }}","{{ qui[0].nom }}","{{ qui[0].bio }}"],
-		   		  ["{{ qui[1].photo_url }}","{{ qui[1].nom }}","{{ qui[1].bio }}"],
-		   		  ["{{ qui[2].photo_url }}","{{ qui[2].nom }}","{{ qui[2].bio }}"],
-		   		  ["{{ qui[3].photo_url }}","{{ qui[3].nom }}","{{ qui[3].bio }}"]];
+			
+			qui = [{% for lui in qui %}["{{ lui.photo_url }}","{{ lui.nom }}","{{ lui.bio }}"]{%if !loop.last %},{%endif%}
+			{% endfor %}];
 	   });
     </script>
 {% endblock %}
