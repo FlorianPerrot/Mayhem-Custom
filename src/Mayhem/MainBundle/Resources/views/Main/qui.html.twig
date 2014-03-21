@@ -56,7 +56,29 @@
 {% block js%}
 	{{ parent() }}
 	<script type="text/javascript">
-	
+	   function setPhoto(photo,anciBio){
+	   		$(photo).attr("id","photo-"+anciBio[0]);
+		   	if(anciBio[1] == ""){
+		   		$(photo).find('img').attr("alt","pas d'image");
+		   		$(photo).find('img').attr("src","{{ asset('bundles/mayhemmain/images/no-photo.jpg') }}");}
+		   	else {
+		   		$(photo).find('img').attr("alt","pas d'image");
+		   		$(photo).find('img').attr("src",anciBio[1]);}
+		   	$(photo).find('p').text(anciBio[2]);
+	   }
+	   function setBio(nouvBio){
+	   		if(nouvBio[1] == ""){
+		   		$(".bio-photo").attr("src","{{ asset('bundles/mayhemmain/images/no-photo.jpg') }}");
+		   		$(".bio-photo").attr("alt","pas d'image");}
+		   	else{
+		   		$(".bio-photo").attr("src",nouvBio[1]);
+		   		$(".bio-photo").attr("alt","photo de "+nouvBio[2]);}
+		   				
+		   	$(".bio-name").text(nouvBio[2]);
+		   	$(".bio-text").text(nouvBio[3]);
+		   	$(".bio-contener").attr("id","bio-"+nouvBio[0]);
+	   }
+	   
 	   docReady( function() {
    			var anciBio;var nouvBio;
 	   		$(".widget").each(function(){
@@ -65,22 +87,10 @@
 					anciBio = qui[parseInt( $(".bio-contener").attr("id").replace("bio-","") )-1];
 					nouvBio = qui[parseInt( $(this).attr("id").replace("photo-","") )-1];
 
-		   			if(nouvBio[1] == ""){
-		   				$(".bio-photo").attr("src","{{ asset('bundles/mayhemmain/images/no-photo.jpg') }}");
-		   				$(".bio-photo").attr("alt","pas d'image");}
-		   			else{
-		   				$(".bio-photo").attr("src",nouvBio[1]);
-		   				$(".bio-photo").attr("alt","photo de "+nouvBio[2]);}
-		   				
-		   			$(".bio-name").text(nouvBio[2]);
-		   			$(".bio-text").text(nouvBio[3]);
-		   			$(".bio-contener").attr("id","bio-"+nouvBio[0]);
+					setBio(nouvBio);
 		   			
 		   			$(this).animate({opacity: 0.10}, 500, function(){
-		   				$(this).attr("id","photo-"+anciBio[0]);
-		   				if(anciBio[1] == ""){$(this).find('img').attr("alt","pas d'image");$(this).find('img').attr("src","{{ asset('bundles/mayhemmain/images/no-photo.jpg') }}");}
-		   				else {$(this).find('img').attr("alt","pas d'image");$(this).find('img').attr("src",anciBio[1]);}
-		   				$(this).find('p').text(anciBio[2]);
+		   				setPhoto(this,anciBio);
 		   				$(this).animate({opacity: 1}, 500);
 		   			});
 		   			
