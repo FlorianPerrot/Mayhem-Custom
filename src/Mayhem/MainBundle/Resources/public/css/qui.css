@@ -18,27 +18,37 @@ header{
 	text-align: center;
 }
 
-#main > #photo-bar{
+#main > .photo-bar{
 	vertical-align:middle;
 	display:inline-block;
 	margin: 10px;
 	width: 15%;
 }
-#main > #photo-bar .widget{
-	border-radius: 50%;
+#main > .photo-bar .widget{
+	overflow:hidden;
+	position: relative;
+	border-radius: 10%;
 	margin: 10px;
 	border:10px solid #C9C9C9;
 }
-#main > #photo-bar .widget:hover {
+#main > .photo-bar .widget:hover {
 	border:solid 10px #942A25; 
 	cursor:pointer;
 }
-#main > #photo-bar .widget img{
-	border-radius: 50%;
+#main > .photo-bar .widget img{
 	width: 100%;
 }
 
-#main #bio-contener{
+#main > .photo-bar .widget p{
+	padding-bottom: 2px;
+	padding-top: 2px;
+	width: 100%;
+	background:rgba(0,0,0,0.5);
+	position: absolute;
+	bottom: 0px;
+}
+
+#main .bio-contener{
 	vertical-align:middle;
 	display:inline-block;
 	text-align: left;
@@ -46,9 +56,8 @@ header{
 	padding: 50px 10px 50px 10px;
 	overflow:hidden;
 }
-#main #bio-contener .bio-photo{
-	border-radius: 50%;
-	margin: 0px;
+#main .bio-contener .bio-photo{
+	margin: 10px;
 	width: 110px;
 	float:left;
 }
@@ -56,14 +65,14 @@ header{
 /*************/
 
 @media only screen and (max-width:680px) {
-	#main > #photo-bar{
+	#main > .photo-bar{
 		width: 100%;
 	}
-	#main > #photo-bar .widget{
+	#main > .photo-bar .widget{
 		width: 80px;
 		display: inline-block;
 	}
-	#bio-contener{
+	.bio-contener{
 		width: 90%;
 		margin: 10px;
 	}

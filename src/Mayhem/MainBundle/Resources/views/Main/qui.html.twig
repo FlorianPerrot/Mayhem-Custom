@@ -1,6 +1,7 @@
 {# src/Mayhem/MainBundle/Resources/views/Welcome/qui.html.twig #}
 
 {% extends "::layout.html.twig" %}
+{% set first = qui|first %}
 
 {% block title %}- {{ parent() }} - Qui sommes nous ?{% endblock %}
 
@@ -12,35 +13,38 @@
 {% block banner %}{% endblock %}
 
 {% block main %}
-
+	
 	<section id="main" class="container border1">
-		<div id="photo-bar">
+		<div class="photo-bar">
 			<ul>
 		    {% for lui in qui %}
-		    	<li id="photo{{ loop.index }}" class="widget">
-		      	{# Ajoute une image si il y a un lien d'image #}
-		      	{% if lui.photo_url != "" %}
-					<img class="w-auto" alt="photo de {{ lui.nom }}" src="{{ lui.photo_url }}">
-				{% else %}
-					<img class="w-auto" alt="pas de photo" src="{{ asset('bundles/mayhemmain/images/no-photo.jpg') }}">
-		      	{% endif %}
-		    	</li>
+		    	{% if loop.index != 1 %}
+		    		<li id="photo-{{ lui.id }}" class="widget">
+		      			{# Ajoute une image si il y a un lien d'image #}
+		      			{% if lui.photo_url != "" %}
+							<img class="w-auto" alt="photo de {{ lui.prenom }} {{ lui.nom }}" src="{{ lui.photo_url }}">
+						{% else %}
+							<img class="w-auto" alt="pas de photo" src="{{ asset('bundles/mayhemmain/images/no-photo.jpg') }}">
+		      			{% endif %}
+		      			<p>{{ lui.prenom }} {{ lui.nom }}</p>
+		    		</li>
+		    	{% endif %}
 		    {% endfor %}
 			</ul>
 	    </div>
-	    <div id="bio-contener" class="border2">
-		    {% set lui = qui|first %}
+	    <div id="bio-{{ first.id }}" class="bio-contener border2">
+		    
 			{# Ajoute une image si il y a un lien d'image #}
-			{% if lui.photo_url != "" %}
-				<img class="bio-photo" alt="photo {{ lui.nom }}" src="{{ lui.photo_url }}">
+			{% if first.photo_url != "" %}
+				<img class="bio-photo" alt="photo {{ first.prenom }} {{ first.nom }}" src="{{ first.photo_url }}">
 			{% else %}
 				<img class="bio-photo" alt="Pas de photo" src="{{ asset('bundles/mayhemmain/images/no-photo.jpg') }}">
 			{% endif %}
 				     	
 			{# ajoute l'article #}
 			<div class="bio-bloc-text">
-				<h1 class="bio-name">{{ lui.nom }}</h1>
-				<p class="bio-text">{{ lui.bio }}</p>
+				<h1 class="bio-name">{{ first.prenom }} {{ first.nom }}</h1>
+				<p class="bio-text">{{ first.bio }}</p>
 			</div>
 		</div>
 	</section>
@@ -52,28 +56,39 @@
 {% block js%}
 	{{ parent() }}
 	<script type="text/javascript">
+	
 	   docReady( function() {
-	   		var i = 1;
-   		
+   			var anciBio;var nouvBio;
 	   		$(".widget").each(function(){
 	   			$(this).click(function(){
-					
-					lui = qui[parseInt($(this).attr("id").replace("photo","")-1)];
+	
+					anciBio = qui[parseInt( $(".bio-contener").attr("id").replace("bio-","") )-1];
+					nouvBio = qui[parseInt( $(this).attr("id").replace("photo-","") )-1];
 
-		   			if(lui[0] == ""){
+		   			if(nouvBio[1] == ""){
 		   				$(".bio-photo").attr("src","{{ asset('bundles/mayhemmain/images/no-photo.jpg') }}");
 		   				$(".bio-photo").attr("alt","pas d'image");}
 		   			else{
-		   				$(".bio-photo").attr("src",lui[0]);
-		   				$(".bio-photo").attr("alt","photo de "+lui[1]);}
+		   				$(".bio-photo").attr("src",nouvBio[1]);
+		   				$(".bio-photo").attr("alt","photo de "+nouvBio[2]);}
 		   				
-		   			$(".bio-name").text(lui[1]);
-		   			$(".bio-text").text(lui[2]);
+		   			$(".bio-name").text(nouvBio[2]);
+		   			$(".bio-text").text(nouvBio[3]);
+		   			$(".bio-contener").attr("id","bio-"+nouvBio[0]);
+		   			
+		   			$(this).animate({opacity: 0.10}, 500, function(){
+		   				$(this).attr("id","photo-"+anciBio[0]);
+		   				if(anciBio[1] == ""){$(this).find('img').attr("alt","pas d'image");$(this).find('img').attr("src","{{ asset('bundles/mayhemmain/images/no-photo.jpg') }}");}
+		   				else {$(this).find('img').attr("alt","pas d'image");$(this).find('img').attr("src",anciBio[1]);}
+		   				$(this).find('p').text(anciBio[2]);
+		   				$(this).animate({opacity: 1}, 500);
+		   			});
 		   			
 	   			});
 	   		});
 			
-			qui = [{% for lui in qui %}["{{ lui.photo_url }}","{{ lui.nom }}","{{ lui.bio }}"]{%if !loop.last %},{%endif%}
+			qui = [{% for lui in qui %}[{{ lui.id }},"{{ lui.photo_url }}","{{ lui.prenom }} {{ lui.nom }}","{{ lui.bio }}"]
+			{%if not loop.last %},{%endif%}
 			{% endfor %}];
 	   });
     </script>
