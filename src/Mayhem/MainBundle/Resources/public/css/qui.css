@@ -57,6 +57,7 @@ header{
 	overflow:hidden;
 }
 #main .bio-contener .bio-photo{
+	border-radius: 10%;
 	margin: 10px;
 	width: 110px;
 	float:left;
