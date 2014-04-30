@@ -18,14 +18,17 @@
   	  	<header id="header">
   	  		{% block header %}
   	  			{% block banner%}
-		  		<img class="img-header" src="{{ asset('img/rip.png') }}">
+  	  			<div id="logo">
+		  			<img class="img-header" src="{{ asset('img/rip.png') }}">
+		  		</div>
 		  		{% endblock %}
 		  		<nav id="menu">
 		  			{% block nav %}
 		  			<ul>
-		  				<li class="nav-element1"><a class="menu-qui" href="{{ path('mayhemmain_qui') }}">Qui sommes nous ?</a></li>
-		  				<li class="nav-element2"><a class="menu-reaper" href="{{ path('mayhemmain_accueil') }}">Projet Reaper</a></li>
-		  				<li class="nav-element3"><a class="menu-calendrier" href="{{ path('mayhemmain_calendrier') }}">Calendrier</a></li>
+		  				<li style="margin-left:20px"><img style="height:40px;" src="{{asset('img/mini-logo.png')}}"/></li>
+		  				<li class="nav-element"><a class="menu-qui" href="{{ path('mayhemmain_qui') }}">Qui sommes nous ?</a></li>
+		  				<li class="nav-element"><a class="menu-reaper" href="{{ path('mayhemmain_accueil') }}">Projet Reaper</a></li>
+		  				<li class="nav-element"><a class="menu-calendrier" href="{{ path('mayhemmain_calendrier') }}">Calendrier</a></li>
 		  			</ul>
 		   			{% endblock %}
 		  		</nav>
@@ -34,9 +37,11 @@
 	  		
 		{% block main %}
 	   	{% endblock %}
-	
+	   	
+		<div style="background:rgba(0,0,0,0.2); height: 40px;"></div>
+		
 		{% block footer %}
-			<footer id="footer" class="container border1">
+			<footer id="footer" class="w-all border1">
 				<p>Mayhem Custom est une petite équipe animée par la passion du travail bien fait ou un truc comme ça ...<br />
 				Site développé par <b>Florian Perrot</b> ;).
 				</p>
@@ -45,7 +50,9 @@
 
 		{% block js %}
 		    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+		    <script type="text/javascript" src="{{ asset('js/jquery-2.1.0.min.js') }}"></script>	
 		    <script type="text/javascript" src="{{ asset('js/masonry.js') }}"></script>	
+		    <script type="text/javascript" src="{{ asset('js/jquery.parallax.js') }}"></script>	
 		{% endblock %}
 
 	</body>

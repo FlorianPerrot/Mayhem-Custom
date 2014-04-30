@@ -1,7 +1,5 @@
 /* Bloc header */
-header{
-	margin-top: 10px;
-}
+
 /***************/
 #menu > ul > li > .menu-qui{
 	border: solid 2px #942A25;
@@ -11,35 +9,32 @@ header{
 
 /* Bloc Main */
 #main{
-	width: 90%;
-	max-width: 1024px;
 	min-width: 530px;
-	margin-bottom: 100px;
 	text-align: center;
 }
 
-#main > .photo-bar{
+#main .photo-bar{
 	vertical-align:middle;
 	display:inline-block;
 	margin: 10px;
 	width: 15%;
 }
-#main > .photo-bar .widget{
+#main .photo-bar .widget{
 	overflow:hidden;
 	position: relative;
 	border-radius: 10%;
 	margin: 10px;
 	border:10px solid #C9C9C9;
 }
-#main > .photo-bar .widget:hover {
+#main .photo-bar .widget:hover {
 	border:solid 10px #942A25; 
 	cursor:pointer;
 }
-#main > .photo-bar .widget img{
+#main .photo-bar .widget img{
 	width: 100%;
 }
 
-#main > .photo-bar .widget p{
+#main .photo-bar .widget p{
 	padding-bottom: 2px;
 	padding-top: 2px;
 	width: 100%;

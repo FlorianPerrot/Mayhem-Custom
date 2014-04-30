@@ -8,49 +8,50 @@
 	<link href="{{ asset('bundles/mayhemmain/css/qui.css') }}" type="text/css" rel="stylesheet" />
 {% endblock %}
 
-{% block banner %}{% endblock %}
+{% block banner %}
+{% endblock %}
 
 {% block main %}
 	
-	<section id="main" class="container border1">
-		<div class="photo-bar">
-			<ul>
-		    {% for lui in qui %}
-		    	{% if loop.index != 1 %}
-		    		<li id="photo-{{ lui.id }}" class="widget">
-		      			{# Ajoute une image si il y a un lien d'image #}
-		      			{% if lui.photo_url != "" %}
-							<img class="w-auto" alt="photo de {{ lui.prenom }} {{ lui.nom }}" src="{{ lui.photo_url }}">
-						{% else %}
-							<img class="w-auto" alt="pas de photo" src="{{ asset('bundles/mayhemmain/images/no-photo.jpg') }}">
-		      			{% endif %}
-		      			<p>{{ lui.prenom }} {{ lui.nom }}</p>
-		    		</li>
-		    	{% endif %}
-		    {% endfor %}
-			</ul>
-	    </div>
-	    <div id="bio-{{ first.id }}" class="bio-contener border2">
-		    
-			{# Ajoute une image si il y a un lien d'image #}
-			{% if first.photo_url != "" %}
-				<img class="bio-photo" alt="photo {{ first.prenom }} {{ first.nom }}" src="{{ first.photo_url }}">
-			{% else %}
-				<img class="bio-photo" alt="Pas de photo" src="{{ asset('bundles/mayhemmain/images/no-photo.jpg') }}">
-			{% endif %}
-				     	
-			{# ajoute l'article #}
-			<div class="bio-bloc-text">
-				<h1 class="bio-name">{{ first.prenom }} {{ first.nom }}</h1>
-				<p class="bio-text">{{ first.bio }}</p>
+	<section id="main" class="border1">
+		<div class="margin-auto">
+			<div class="photo-bar">
+				<ul>
+			    {% for lui in qui %}
+			    	{% if loop.index != 1 %}
+			    		<li id="photo-{{ lui.id }}" class="widget">
+			      			{# Ajoute une image si il y a un lien d'image #}
+			      			{% if lui.photo_url != "" %}
+								<img class="w-auto" alt="photo de {{ lui.prenom }} {{ lui.nom }}" src="{{ lui.photo_url }}">
+							{% else %}
+								<img class="w-auto" alt="pas de photo" src="{{ asset('bundles/mayhemmain/images/no-photo.jpg') }}">
+			      			{% endif %}
+			      			<p>{{ lui.prenom }} {{ lui.nom }}</p>
+			    		</li>
+			    	{% endif %}
+			    {% endfor %}
+				</ul>
+		    </div>
+		    <div id="bio-{{ first.id }}" class="bio-contener border2">
+			    
+				{# Ajoute une image si il y a un lien d'image #}
+				{% if first.photo_url != "" %}
+					<img class="bio-photo" alt="photo {{ first.prenom }} {{ first.nom }}" src="{{ first.photo_url }}">
+				{% else %}
+					<img class="bio-photo" alt="Pas de photo" src="{{ asset('bundles/mayhemmain/images/no-photo.jpg') }}">
+				{% endif %}
+					     	
+				{# ajoute l'article #}
+				<div class="bio-bloc-text">
+					<h1 class="bio-name">{{ first.prenom }} {{ first.nom }}</h1>
+					<p class="bio-text">{{ first.bio }}</p>
+				</div>
 			</div>
 		</div>
 	</section>
 
 {% endblock %}
 
-{% block footer %}
-{% endblock %}
 {% block js%}
 	{{ parent() }}
 	<script type="text/javascript">

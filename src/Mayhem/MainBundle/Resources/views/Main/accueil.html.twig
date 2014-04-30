@@ -9,31 +9,32 @@
 {% endblock %} 
    
 {% block main %}
+	<section id="main" class="border1">
+		<div class="margin-auto">
 
-	<section id="main" class="container border1">
+	    {% for article in articles %}
+	    
+	      <div class="widget w1-widget border2">
+	      
+	      	{# Ajoute une image si il y a un lien d'image #}
+	      	{% if article.img_url != "" %}
+				<img class="banner" src="{{ article.img_url }}">
+				<hr />
+	      	{% endif %}
+	      	
+	      	{# ajoute l'article #}
+	      	<h1>{{ article.titre }}</h1>
+	      	<p>{{ article.contenue }}</p>
+	      	
+	      </div>
+	      
+	    {% else %}
+	      <div class="widget w1-widget border2">
+	      	Pas (encore !) d'articles
+	      </div>
+	    {% endfor %}
+		</div>
 		
-    {% for article in articles %}
-    
-      <div class="widget w1-widget border2">
-      
-      	{# Ajoute une image si il y a un lien d'image #}
-      	{% if article.img_url != "" %}
-			<img class="banner" src="{{ article.img_url }}">
-			<hr />
-      	{% endif %}
-      	
-      	{# ajoute l'article #}
-      	<h1>{{ article.titre }}</h1>
-      	<p>{{ article.contenue }}</p>
-      	
-      </div>
-      
-    {% else %}
-      <div class="widget w1-widget border2">
-      	Pas (encore !) d'articles
-      </div>
-    {% endfor %}
-
 	</section>
 
 {% endblock %}
@@ -43,12 +44,16 @@
 
 	<script type="text/javascript">
 	   docReady( function() {
-	   var container = document.querySelector('#main');
+	   var container = document.querySelector('#main > div');
 	   var article = container.querySelector('article');
 	   var msnry = new Masonry( container, { itemSelector: '.widget', "isFitWidth": true});
 	   msnry.stamp( article );
 	   msnry.layout();
 	   });
+	   
+
+	   $('#slide1').parallax(50,0.1); 
+	   $('#slide2').parallax(200,0.1); 
     </script>
 
 {% endblock %}
